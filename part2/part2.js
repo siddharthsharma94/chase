@@ -40,7 +40,7 @@ function convertToWord(val){
         return "Zero";
     }
     else {
-        return convertMillion(val)+"Dollars";
+        return convertBillion(val)+"Dollars";
     }
 }
 
@@ -67,7 +67,7 @@ function convertHundred(val){
 
 function convertThousand(val){
     if (val >= 1000){
-        return convertHundred(Math.floor(val/1000))+"Thousand"+convertHundred(val % 1000);
+        return convertHundred(Math.floor(val / 1000))+"Thousand"+convertHundred(val % 1000);
     }
     else{
         return convertHundred(val);
@@ -76,9 +76,18 @@ function convertThousand(val){
 
 function convertMillion(val){
     if (val >= 1000000){
-        return convertMillion(Math.floor(val/1000000))+"Million"+convertThousand(val % 1000000);
+        return convertMillion(Math.floor(val / 1000000))+"Million"+convertThousand(val % 1000000);
     }
     else {
         return convertThousand(val);
+    }
+}
+
+function convertBillion(val){
+    if (val >= 1000000000){
+        return convertBillion(Math.floor(val / 1000000000))+"Billion"+convertMillion(val % 1000000000);
+    }
+    else {
+        return convertMillion(val);
     }
 }
